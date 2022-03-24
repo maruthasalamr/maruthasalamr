@@ -4,7 +4,11 @@ import "semantic-ui-css/semantic.min.css";
 const axios = require("axios");
 function Listview() {
   const [state, setstate] = useState([]);
-  const [selectedItem, setselectedItem] = useState();
+  const [selectedItem, setselectedItem] = useState({
+    name:'',
+    country:'',
+    alpha_two_code:''
+  });
   const [open, setOpen] = React.useState(false);
 
   useEffect(async () => {
@@ -59,9 +63,9 @@ function Listview() {
         <Modal.Header>Detail View</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
-            <Header>{selectedItem.name}</Header>
-            <p>{selectedItem.country}</p>
-            <p>{selectedItem.alpha_two_code}</p>
+            <Header>{selectedItem.name!==undefined ? selectedItem.name :''}</Header>
+            <p>{selectedItem.country!==undefined ? selectedItem.country : ''}</p>
+            <p>{selectedItem.alpha_two_code!==undefined ? selectedItem.alpha_two_code :''}</p>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
